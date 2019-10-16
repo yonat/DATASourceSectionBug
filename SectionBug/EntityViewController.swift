@@ -129,15 +129,6 @@ class SubtitleTableViewCell: UITableViewCell {
     }
 }
 
-extension DATASource {
-    func flatIndex(indexPath: IndexPath) -> Int {
-        if let item = object(indexPath), let index = objects.firstIndex(of: item) {
-            return index
-        }
-        return indexPath.row
-    }
-}
-
 extension String {
     func sortDescriptor(ascending: Bool = true, selector: Selector? = nil) -> NSSortDescriptor {
         NSSortDescriptor(key: self, ascending: ascending, selector: selector)

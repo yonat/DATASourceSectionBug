@@ -1,0 +1,20 @@
+PODS:
+  - DATASource (7.3.0)
+  - SweeterSwift (1.0.5)
+
+DEPENDENCIES:
+  - DATASource (~> 7.2)
+  - SweeterSwift
+
+SPEC REPOS:
+  trunk:
+    - DATASource
+    - SweeterSwift
+
+SPEC CHECKSUMS:
+  DATASource: 64f959d94c35f246f00901a653f3deb4edc6bd77
+  SweeterSwift: 2708d1eea926546f8f6e8fea38ac8f5598ff00c7
+
+PODFILE CHECKSUM: 6ed637a1b6994e37f26d4124b1170067f15cdb67
+
+COCOAPODS: 1.8.3

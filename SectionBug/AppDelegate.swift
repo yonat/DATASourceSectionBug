@@ -12,11 +12,29 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let sessions = [
+            insertSession(id: "A", text: "A phase 0", phase: 0),
+            insertSession(id: "B", text: "B phase 1", phase: 1),
+            insertSession(id: "C", text: "C phase 2", phase: 2),
+            insertSession(id: "D", text: "D phase 3", phase: 3),
+        ]
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            sessions[0].text = "A phase 1 (changed)"
+            sessions[0].phase = 1 // TODO: Assertion failure in -[UITableView _Bug_Detected_In_Client_Of_UITableView_Invalid_Number_Of_Rows_In_Section:]
+        }
+
         return true
+    }
+
+    func insertSession(id: String, text: String, phase: Int16) -> Session {
+        let session = Session(entity: Session.entity(), insertInto: persistentContainer.viewContext)
+        session.id = id
+        session.text = text
+        session.phase = phase
+        return session
     }
 
     // MARK: UISceneSession Lifecycle
@@ -35,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the

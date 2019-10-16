@@ -10,11 +10,23 @@ import UIKit
 
 class ViewController: EntityViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    init() {
+        super.init(
+            managedObjectContext: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext,
+            entity: "Session",
+            titleAttribute: "text",
+            sectionAttribute: "phase"
+        )
     }
 
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Sessions"
+        view.backgroundColor = .systemBackground
+    }
 }
 
